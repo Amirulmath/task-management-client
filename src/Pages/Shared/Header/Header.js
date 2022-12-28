@@ -1,23 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Task Management</Navbar.Brand>
+                <Navbar.Brand>
+                    <b>Task Management</b>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Home</Nav.Link>
-                        <Nav.Link href="#pricing">Add Task</Nav.Link>
-                        <Nav.Link href="#pricing">My Task</Nav.Link>
-                        <Nav.Link href="#pricing">Completed Task</Nav.Link>
+                        <Nav.Link href='/'>Home</Nav.Link>
+                        <Nav.Link href='/blog'>Add Task</Nav.Link>
+                        <Nav.Link href="/reviewPage">My Task</Nav.Link>
+                        <Nav.Link href="/reviewPage">Completed Task</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Login</Nav.Link>
+                        <Nav.Link>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span className='me-4'>{user?.displayName}</span>
+                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link className='text-decoration-none' to='/login'>Login</Link>
+                                    </>
+                            }
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
