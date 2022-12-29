@@ -8,7 +8,6 @@ import CompletedTask from "../../Pages/Tasks/CompletedTask/CompletedTask";
 import DailyTask from "../../Pages/Tasks/DailyTask/DailyTask";
 import Media from "../../Pages/Tasks/Media/Media";
 import MyTask from "../../Pages/Tasks/MyTask/MyTask";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -37,15 +36,15 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/mytask', 
-                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
+                element: <MyTask></MyTask>
             },
             {
                 path: '/completedtask', 
-                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
+                element: <CompletedTask></CompletedTask>
             },
             {
                 path: '/media', 
-                element: <PrivateRoute><Media></Media></PrivateRoute>
+                element: <Media></Media>
             }
         ]
     }

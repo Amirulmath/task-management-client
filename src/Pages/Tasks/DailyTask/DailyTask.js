@@ -27,7 +27,7 @@ const DailyTask = () => {
             photoURL
         }
 
-        fetch('http://localhost:5000/mytasks', {
+        fetch('http://localhost:5000/alltasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
