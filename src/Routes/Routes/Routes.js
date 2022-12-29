@@ -29,11 +29,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/dailytask', 
-                element: <PrivateRoute><DailyTask></DailyTask></PrivateRoute>
+                element: <DailyTask></DailyTask>
             },
             {
                 path: '/addtask', 
-                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
+                element: <AddTask></AddTask>
             },
             {
                 path: '/mytask', 
