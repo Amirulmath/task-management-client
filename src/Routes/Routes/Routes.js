@@ -3,6 +3,12 @@ import Main from "../../layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import AddTask from "../../Pages/Tasks/AddTask/AddTask";
+import CompletedTask from "../../Pages/Tasks/CompletedTask/CompletedTask";
+import DailyTask from "../../Pages/Tasks/DailyTask/DailyTask";
+import Media from "../../Pages/Tasks/Media/Media";
+import MyTask from "../../Pages/Tasks/MyTask/MyTask";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -20,6 +26,26 @@ export const routes = createBrowserRouter([
             {
                 path: '/signup', 
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/dailytask', 
+                element: <PrivateRoute><DailyTask></DailyTask></PrivateRoute>
+            },
+            {
+                path: '/addtask', 
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
+            },
+            {
+                path: '/mytask', 
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
+            },
+            {
+                path: '/completedtask', 
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
+            },
+            {
+                path: '/media', 
+                element: <PrivateRoute><Media></Media></PrivateRoute>
             }
         ]
     }
