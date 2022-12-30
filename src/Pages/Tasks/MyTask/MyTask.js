@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Loading from '../../Shared/Loading/Loading';
 import MyTaskCard from './MyTaskCard';
 
 const MyTask = () => {
@@ -8,7 +9,7 @@ const MyTask = () => {
 
     const url = `http://localhost:5000/mytasks?email=${user?.email}`;
 
-    const { data: myTasks = [] } = useQuery({
+    const { data: myTasks = [], isLoading } = useQuery({
         queryKey: ['myTasks', user?.email],
         queryFn: async () => {
             const res = await fetch(url);
@@ -16,6 +17,10 @@ const MyTask = () => {
             return data;
         }
     });
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <div>

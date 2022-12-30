@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Loading from '../../Shared/Loading/Loading';
 import MediaCard from './MediaCard';
 
 const Media = () => {
@@ -8,7 +9,7 @@ const Media = () => {
 
     const url = `http://localhost:5000/mymedia?email=${user?.email}`;
 
-    const { data: mediaTask = [] } = useQuery({
+    const { data: mediaTask = [], isLoading } = useQuery({
         queryKey: ['mediaTask', user?.email],
         queryFn: async () => {
             const res = await fetch(url);
@@ -16,6 +17,10 @@ const Media = () => {
             return data;
         }
     });
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <div>
