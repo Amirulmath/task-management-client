@@ -7,6 +7,7 @@ import AddTask from "../../Pages/Tasks/AddTask/AddTask";
 import CompletedTask from "../../Pages/Tasks/CompletedTask/CompletedTask";
 import DailyTask from "../../Pages/Tasks/DailyTask/DailyTask";
 import Media from "../../Pages/Tasks/Media/Media";
+import EditTask from "../../Pages/Tasks/MyTask/EditTask";
 import MyTask from "../../Pages/Tasks/MyTask/MyTask";
 
 export const routes = createBrowserRouter([
@@ -37,6 +38,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/mytask', 
                 element: <MyTask></MyTask>
+            },
+            {
+                path: '/edittask', 
+                element: <EditTask></EditTask>
             },
             {
                 path: '/completedtask', 

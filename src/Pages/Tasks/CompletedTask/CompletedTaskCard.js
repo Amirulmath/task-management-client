@@ -1,34 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Card, Image } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
-const MyTaskCard = ({ myTask }) => {
+const CompletedTaskCard = ({ myTask }) => {
     const { _id, name, task, photoURL, status } = myTask;
-    const [tasks, setTasks] = useState([])
     const navigate = useNavigate();
-
-    const handleStatusUpdate = id => {
-        fetch(`http://localhost:5000/alltasks/${id}`, {
-            method: 'PATCH', 
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({status: 'Completed'})
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.modifiedCount > 0) {
-                const remaining = tasks.filter(tas => tas._id !== id);
-                const completing = tasks.find(tas => tas._id === id);
-                completing.status = 'Completed'
-
-                const newTasks = [completing, ...remaining];
-                setTasks(newTasks);
-                navigate('/completedtask');
-            }
-        })
-    }
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this task')
@@ -38,11 +14,7 @@ const MyTaskCard = ({ myTask }) => {
             })
         }
         navigate('/');
-    };
-
-    const handleEdit = (id) => {
-        // navigate(`/edittask/${id}`)
-      }
+    }
 
     return (
         <div>
@@ -67,8 +39,20 @@ const MyTaskCard = ({ myTask }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-muted d-flex justify-content-between">
-                    <Button onClick={() => handleEdit(_id)} variant="primary">Edit</Button>
-                    <Button onClick={() => handleStatusUpdate(_id)} variant="primary">{status ? status : 'Not Complete'}</Button>
+                    <div>
+                        {
+                            status ?
+                                <>
+                                    <Button variant="primary"> Completed</Button>
+                                </>
+                                :
+                                <>
+                                    <Link to='/mytask'>
+                                        <Button variant="primary">Not Complete</Button>
+                                    </Link>
+                                </>
+                        }
+                    </div>
                     <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
                     <Link to='/'>
                         <Button variant="dark">Back</Button>
@@ -79,4 +63,4 @@ const MyTaskCard = ({ myTask }) => {
     );
 };
 
-export default MyTaskCard;
+export default CompletedTaskCard;

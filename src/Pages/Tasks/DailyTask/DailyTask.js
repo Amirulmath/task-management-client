@@ -2,15 +2,12 @@ import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const DailyTask = () => {
     const { user } = useContext(AuthContext);
-    const location = useLocation();
     const navigate = useNavigate();
-
-    const from = location.state?.from?.pathname || '/';
 
     const handleDailyTask = event => {
         event.preventDefault();
@@ -40,7 +37,7 @@ const DailyTask = () => {
                 if (data.acknowledged) {
                     alert('Added your daily task successfully')
                     form.reset();
-                    navigate(from, { replace: true });
+                    navigate('/mytask');
                 }
             })
             .catch(er => console.error(er));
