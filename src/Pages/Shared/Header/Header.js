@@ -25,8 +25,8 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href='/'>Home</Nav.Link>
-                        <Nav.Link href='/dailytask'>Daily Task</Nav.Link>
-                        <Nav.Link href='/addtask'>Add Task</Nav.Link>
+                        {/* <Nav.Link href='/dailytask'>Daily Task</Nav.Link>
+                        <Nav.Link href='/addtask'>Add Task</Nav.Link> */}
                         <Nav.Link href="/mytask">My Task</Nav.Link>
                         <Nav.Link href="/completedtask">Completed Task</Nav.Link>
                         <Nav.Link href="/media">Media</Nav.Link>
@@ -36,6 +36,8 @@ const Header = () => {
                             {
                                 user?.uid ?
                                     <>
+                                        <Link className='text-decoration-none me-4' to='/dailytask'>Daily Task</Link>
+                                        <Link className='text-decoration-none me-4' to='/addtask'>Add Task</Link>
                                         <span className='me-4'>{user?.displayName}</span>
                                         <Button variant="light" onClick={handleLogOut}>Log out</Button>
                                     </>

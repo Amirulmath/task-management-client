@@ -9,7 +9,7 @@ const CompletedTaskCard = ({ myTask }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this task')
         if (proceed) {
-            fetch(`http://localhost:5000/alltasks/${id}`, {
+            fetch(`https://task-management-server-pi.vercel.app/alltasks/${id}`, {
                 method: 'DELETE'
             })
         }

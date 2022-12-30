@@ -24,7 +24,7 @@ const DailyTask = () => {
             photoURL
         }
 
-        fetch('http://localhost:5000/alltasks', {
+        fetch('https://task-management-server-pi.vercel.app/alltasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

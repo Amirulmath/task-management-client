@@ -7,7 +7,7 @@ import MediaCard from './MediaCard';
 const Media = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/mymedia?email=${user?.email}`;
+    const url = `https://task-management-server-pi.vercel.app/mymedia?email=${user?.email}`;
 
     const { data: mediaTask = [], isLoading } = useQuery({
         queryKey: ['mediaTask', user?.email],

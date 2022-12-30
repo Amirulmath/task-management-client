@@ -11,7 +11,7 @@ const EditTask = () => {
     const navigate = useNavigate();
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/alltasks/${id}`)
+        fetch(`https://task-management-server-pi.vercel.app/alltasks/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

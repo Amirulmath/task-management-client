@@ -36,7 +36,7 @@ const AddTask = () => {
                         image: imgData.data.url,
                     }
 
-                    fetch('http://localhost:5000/mediatasks', {
+                    fetch('https://task-management-server-pi.vercel.app/mediatasks', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
