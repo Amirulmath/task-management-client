@@ -1,3 +1,15 @@
+Live Website: https://auth-router-context-649db.web.app/
+
+Bullet Points:
+1. First we have installed react app, react dom and react bootstrap.
+2. We have used Bootstrap & React Bootstrap CSS framework.
+3. We have added web page title, favicon and logo etc.
+4. We have created a router using createBrowserRouter and Added RouterProvider and setting router prop and setting main layout at the root of the route.
+5. We have received service lists & service API from server and added card on service lists page.
+6. We have created firebase app and installed firebase.
+7. We have got firebase configuration inside firebase.config.js and used environment variable.
+8. We have used Email and Google firebase authentication. We have installed React icons used font awesome.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
