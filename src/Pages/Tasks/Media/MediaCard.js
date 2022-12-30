@@ -1,20 +1,9 @@
 import React from 'react';
 import { Button, Card, Image } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const MyTaskCard = ({ myTask }) => {
-    const { _id, name, task, photoURL } = myTask;
-    const navigate = useNavigate();
-
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure, you want to cancel this task')
-        if (proceed) {
-            fetch(`http://localhost:5000/alltasks/${id}`, {
-                method: 'DELETE'
-            })
-        }
-        navigate('/');
-    };
+const MediaCard = ({ media }) => {
+    const { name, task, photoURL, image } = media;
 
     return (
         <div>
@@ -33,6 +22,7 @@ const MyTaskCard = ({ myTask }) => {
                     </div>
                 </Card.Header>
                 <Card.Body>
+                <Card.Img className="mb-2" variant="top" src={image} />
                     <Card.Text>
                         <p><b>My Task </b></p>
                         <p>{task}</p>
@@ -42,7 +32,9 @@ const MyTaskCard = ({ myTask }) => {
                     <Link to=''>
                         <Button variant="primary">Update</Button>
                     </Link>
-                    <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
+                    <Link to=''>
+                        <Button variant="danger">Delete</Button>
+                    </Link>
                     <Link to=''>
                         <Button variant="primary">Complete</Button>
                     </Link>
@@ -55,4 +47,4 @@ const MyTaskCard = ({ myTask }) => {
     );
 };
 
-export default MyTaskCard;
+export default MediaCard;
